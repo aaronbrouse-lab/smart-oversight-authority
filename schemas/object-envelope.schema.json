@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Smart Oversight Object Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "object_type",
+    "object_id",
+    "object_version",
+    "created_utc",
+    "producer",
+    "authority_lane",
+    "payload"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "Type of object (e.g. doctrine_block, requirement_node)."
+    },
+    "object_id": {
+      "type": "string",
+      "description": "Stable unique identifier for the object."
+    },
+    "object_version": {
+      "type": "string",
+      "description": "Version label (e.g. v0.1.0)."
+    },
+    "created_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp in UTC."
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "mode"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Human or system that produced the object."
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["human", "system", "hybrid"]
+        }
+      }
+    },
+    "authority_lane": {
+      "type": "string",
+      "enum": ["authority", "observation"],
+      "description": "Authority classification of the object."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Object-specific content validated by a payload schema."
+    }
+  }
+}
