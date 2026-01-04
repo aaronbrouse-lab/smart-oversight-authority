@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/smart-oversight/schemas/object-envelope.schema.json",
+  "title": "Smart Oversight Object Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "object_type",
+    "object_id",
+    "object_version",
+    "created_utc",
+    "producer",
+    "content_hash",
+    "authority_lane",
+    "payload"
+  ],
+  "properties": {
+    "object_type": {
+      "type": "string",
+      "description": "Type name of the object (e.g., doctrine_block, requirement_node, source_snapshot, gate_log).",
+      "pattern": "^[a-z0-9_\\-]+$"
+    },
+    "object_id": {
+      "type": "string",
+      "description": "Stable unique identifier for this object instance.",
+      "minLength": 8
+    },
+    "object_version": {
+      "type": "string",
+      "description": "Version label for the object (e.g., v0.1.0).",
+      "pattern": "^v\\d+\\.\\d+\\.\\d+$"
+    },
+    "created_utc": {
+      "type": "string",
+      "description": "Creation timestamp in UTC (ISO 8601).",
+      "format": "date-time"
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "mode"],
+      "properties": {
+        "name": { "type": "string", "description": "Human or system name producing the object." },
+        "mode": {
+          "type": "string",
+          "description": "How the object was produced.",
+          "enum": ["human", "system", "hybrid"]
+        }
+      }
+    },
+    "content_hash": {
+      "type": "string",
+      "description": "Hash of the payload content for integrity (e.g., sha256:<hex>).",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "authority_lane": {
+      "type": "string",
+      "description": "Indicates whether the object belongs to the Authority lane or Observation lane.",
+      "enum": ["authority", "observation"]
+    },
+    "payload": {
+      "type": "object",
+      "description": "The object-specific content. Validated by an object_type-specific schema.",
+      "additionalProperties": true
+    },
+    "references": {
+      "type": "array",
+      "description": "Pointers to other objects this object depends on (by id/hash/version).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["object_type", "object_id", "content_hash"],
+        "properties": {
+          "object_type": { "type": "string" },
+          "object_id": { "type": "string" },
+          "content_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "object_version": { "type": "string", "pattern": "^v\\d+\\.\\d+\\.\\d+$" }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional human-readable note. Not used for gate logic."
+    }
+  }
+}
