@@ -1,0 +1,21 @@
+{
+  "gate_id": "GATE-BASELINE",
+  "version": "v0.1.0",
+  "applies_to": "requirement_node",
+  "logic": {
+    "pass_conditions": [
+      "required_evidence_present == true"
+    ],
+    "block_conditions": [
+      "required_evidence_present == false"
+    ]
+  },
+  "outputs": {
+    "PASS": {
+      "reason_code": "RSN-EVIDENCE-PRESENT"
+    },
+    "BLOCK": {
+      "reason_code": "RSN-EVIDENCE-MISSING"
+    }
+  }
+}
