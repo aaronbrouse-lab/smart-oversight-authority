@@ -1,0 +1,24 @@
+{
+  "object_type": "doctrine_block",
+  "object_id": "DOC-BOUNDARY-FIRST",
+  "object_version": "v0.1.0",
+  "created_utc": "2026-01-01T00:00:00Z",
+  "producer": {
+    "name": "aaron",
+    "mode": "human"
+  },
+  "authority_lane": "authority",
+  "payload": {
+    "doctrine_id": "DOC-BOUNDARY-FIRST",
+    "title": "Boundary First",
+    "status": "draft",
+    "principles": [
+      "Authority must be established before continuation.",
+      "Absence of required authority defaults to refusal."
+    ],
+    "refusal_triggers": [
+      "Missing authoritative source",
+      "Unresolved authority conflict"
+    ]
+  }
+}
