@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Requirement Node Payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "requirement_id",
+    "title",
+    "status",
+    "authority_source",
+    "applicability",
+    "evidence_expectation"
+  ],
+  "properties": {
+    "requirement_id": {
+      "type": "string",
+      "description": "Stable unique identifier for the requirement."
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "authority_source": {
+      "type": "string",
+      "description": "Source of authority (e.g., regulation, contract, directive)."
+    },
+    "applicability": {
+      "type": "string",
+      "description": "Scope and conditions where this requirement applies."
+    },
+    "evidence_expectation": {
+      "type": "string",
+      "description": "What would demonstrate satisfaction of this requirement."
+    }
+  }
+}
