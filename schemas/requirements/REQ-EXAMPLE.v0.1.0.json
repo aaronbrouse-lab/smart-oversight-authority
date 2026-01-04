@@ -1,0 +1,19 @@
+{
+  "object_type": "requirement_node",
+  "object_id": "REQ-EXAMPLE",
+  "object_version": "v0.1.0",
+  "created_utc": "2026-01-01T00:00:00Z",
+  "producer": {
+    "name": "aaron",
+    "mode": "human"
+  },
+  "authority_lane": "authority",
+  "payload": {
+    "requirement_id": "REQ-EXAMPLE",
+    "title": "Example Requirement",
+    "authority_source": "Demonstration only",
+    "condition": "This requirement exists to validate schema structure.",
+    "evidence_expectation": "Presence of this file in the repository.",
+    "status": "draft"
+  }
+}
